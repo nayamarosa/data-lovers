@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
+  <nav class="display-all menu-navigation">
     <h1>
-      <img src="" alt="">
+      <!-- <img class="logo-img" src="" alt=""> -->
     </h1>
-    <ul>
+    <ul class="display-all menu-list">
       <li><a href="">QUEM SOMOS</a></li>
       <li><a href="">ESTATÍSTICAS</a></li>
       <li><a href="">PESQUISAS</a></li>
@@ -19,33 +19,47 @@
     </ul>
   </nav>
   <main>
-    <header>
+    <header class="display-all main-header">
       <figure>
         <!-- gráfico -->
       </figure>
-      <table id="json-data">
+      <table id="json-data" class="table-data">
       </table>
     </header>
-    <section>
-      <h2>FAÇA SUA PESQUISA</h2>
-      <div>
-      <h3>ESCOLHA SUA CATEGORIA</h3>
-    </div>
-    </div>
-    <div>
-      <h3>ESCOLHA UM INTERVALO DE ANOS</h3>
-      <input id="all-year" type="radio"> TODOS OS ANOS
-      <input id="year-00-04" type="radio"> 2000 - 2004
-      <input id="year-05-09" type="radio"> 2005 - 2009
-      <input id="year-10-15" type="radio"> 2010 - 2015
-    </div>
-    <div>
-      <h3>FINALIZE SUA PESQUISA</h3>
-      <button>CONTINUAR</button>
-    </div>
+    <h2>FAÇA SUA PESQUISA</h2>
+    <section class="display-all make-search">
+      <div class="category-choice">
+        <h3>ESCOLHA SUA CATEGORIA</h3>
+        <input type="radio" name="categories" id="car" value="car">
+        <label for="car"><img src="img/car.png" alt="carro"></label>
+        <input type="radio" name="categories" id="bus" value="bus">
+        <label for="bus"><img src="img/bus.png" alt="ônibus"></label>
+        <input type="radio" name="categories" id="truck" value="truck">
+        <label for="truck"><img src="img/truck.png" alt="caminhão"></label>
+        <input type="radio" name="categories" id="moto" value="moto">
+        <label for="moto"><img src="img/motorcycle.png" alt="moto"></label>
+        <input type="radio" name="categories" id="bike" value="bike">
+        <label for="bike"><img src="img/bike.png" alt="bicicleta"></label>
+      </div>
+      <div class="display-all years-choice">
+        <h3>ESCOLHA UM INTERVALO DE TEMPO</h3>
+        <input type="radio" name="years" id="all-years" value="all-years">
+        <label for="all-years">TODOS OS ANOS</label>
+        <input type="radio" name="years" id="year-00-04" value="year-00-04">
+        <label for="year-00-04">2000 - 2004</label>
+        <input type="radio" name="years" id="year-05-09" value="year-05-09">
+        <label for="year-05-09">2005 - 2009</label>
+        <input type="radio" name="years" id="year-10-15" value="year-10-15">
+        <label for="year-10-15">2010 - 2015</label>
+        <!-- <input type="radio" name="years" id="year-04" value="year-04">
+        <label for="year-04">2004</label> -->
+      </div>
+      <div class="display-all continue-search">
+        <h3>FINALIZE SUA PESQUISA</h3>
+        <button id="continue" class="btn">CONTINUAR</button>
+      </div>
+    </section>
   </main>
-  <!-- <script src="./data/injuries/injuries.js"></script> -->
-  <!-- <script src="data.js"></script> -->
   <script src="main.js"></script>
 </body>
 

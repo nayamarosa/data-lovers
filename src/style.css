@@ -1,15 +1,78 @@
+/* 
+00E6AC
+07D29E
+
+0CC0C0
+00B3B3 */
+
+body{
+  margin: 0 auto;
+  width: 70%;
+}
+
+.display-all{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .menu-navigation{
+  
+}
+
+.logo-img{
+  
+} */
+
+.menu-list{
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list li{
+  margin: 0 0 0 30px;
+  list-style: none;
+}
+
+/* .main-header{
+  
+}
+
+.table-data{
+  
+}
+
 .table-item{
-    
+  
+} */
+
+.table-item td{
+  border: 1px solid black;
+  padding: 5px;
 }
 
-.accident-type{
-
+.make-search{
+  align-items: flex-start;
 }
 
-.accident-year{
-
+.category-choice{
+  width: 25%;
 }
 
-.accident-number{
-
+.category-choice img{
+  width: 25%;
 }
+
+.years-choice{
+  flex-direction: column;
+  width: 25%;
+}
+
+.continue-search{
+  flex-direction: column;
+  width: 25%;
+}
+
+/* .btn{
+  
+} */
