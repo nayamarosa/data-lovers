@@ -1,66 +1,52 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
   <title>Data Lovers</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="display-all menu-navigation">
-    <h1>
-      <!-- <img class="logo-img" src="" alt=""> -->
-    </h1>
-    <ul class="display-all menu-list">
-      <li><a href="">QUEM SOMOS</a></li>
-      <li><a href="">ESTATÍSTICAS</a></li>
-      <li><a href="">PESQUISAS</a></li>
-      <li><a href="">CONTATO</a></li>
-    </ul>
-  </nav>
-  <main>
-    <header class="display-all main-header">
-      <figure>
-        <!-- gráfico -->
-      </figure>
-      <table id="json-data" class="table-data">
-      </table>
-    </header>
-    <h2>FAÇA SUA PESQUISA</h2>
-    <section class="display-all make-search">
-      <div class="category-choice">
-        <h3>ESCOLHA SUA CATEGORIA</h3>
-        <input type="radio" name="categories" id="car" value="car">
-        <label for="car"><img src="img/car.png" alt="carro"></label>
-        <input type="radio" name="categories" id="bus" value="bus">
-        <label for="bus"><img src="img/bus.png" alt="ônibus"></label>
-        <input type="radio" name="categories" id="truck" value="truck">
-        <label for="truck"><img src="img/truck.png" alt="caminhão"></label>
-        <input type="radio" name="categories" id="moto" value="moto">
-        <label for="moto"><img src="img/motorcycle.png" alt="moto"></label>
-        <input type="radio" name="categories" id="bike" value="bike">
-        <label for="bike"><img src="img/bike.png" alt="bicicleta"></label>
+  <form id="data-form">
+    <div>
+      <input type="radio" name="filter" id="category" value="category">
+      <label for="category">CATEGORIA</label>
+      <input type="radio" name="filter" id="year" value="year">
+      <label for="year">ANO</label>
+    </div>
+    <section>
+      <div id="select-category" class="hidden">
+        <input type="radio" name="select-category" id="car" value="Total_Injured_Persons_Passenger_Car_Occupants">
+        <label for="car">CARRO</label>
+        <input type="radio" name="select-category" id="bus" value="Total_Injured_Persons_Bus_Occupants">
+        <label for="bus">ÔNIBUS</label>
+        <input type="radio" name="select-category" id="truck" value="Total_Injured_Persons_Truck_Occupants_Large">
+        <label for="truck">CAMINHÃO</label>
+        <input type="radio" name="select-category" id="moto" value="Total_Injured_Persons_Motorcyclists">
+        <label for="moto">MOTO</label>
+        <input type="radio" name="select-category" id="bike" value="Total_Injured_Persons_Pedalcyclists">
+        <label for="bike">BICICLETA</label>
       </div>
-      <div class="display-all years-choice">
-        <h3>ESCOLHA UM INTERVALO DE TEMPO</h3>
-        <input type="radio" name="years" id="all-years" value="all-years">
-        <label for="all-years">TODOS OS ANOS</label>
-        <input type="radio" name="years" id="year-00-04" value="year-00-04">
-        <label for="year-00-04">2000 - 2004</label>
-        <input type="radio" name="years" id="year-05-09" value="year-05-09">
-        <label for="year-05-09">2005 - 2009</label>
-        <input type="radio" name="years" id="year-10-15" value="year-10-15">
-        <label for="year-10-15">2010 - 2015</label>
-        <!-- <input type="radio" name="years" id="year-04" value="year-04">
-        <label for="year-04">2004</label> -->
-      </div>
-      <div class="display-all continue-search">
-        <h3>FINALIZE SUA PESQUISA</h3>
-        <button id="continue" class="btn">CONTINUAR</button>
+      <div id="select-year" class="hidden">
+        <input type="radio" name="select-year" id="2011" value="2011-01-04">
+        <label for="2011">2011</label>
+        <input type="radio" name="select-year" id="2012" value="2012-01-04">
+        <label for="2012">2012</label>
+        <input type="radio" name="select-year" id="2013" value="2013-01-04">
+        <label for="2013">2013</label>
+        <input type="radio" name="select-year" id="2014" value="2014-01-04">
+        <label for="2014">2014</label>
+        <input type="radio" name="select-year" id="2015" value="2015-01-04">
+        <label for="2015">2015</label>
       </div>
     </section>
-  </main>
+    <div>
+      <button type="submit">ENVIAR</button>
+      <button type="reset">LIMPAR</button>
+    </div>
+  </form>
+  
   <script src="main.js"></script>
 </body>
-
 </html>
