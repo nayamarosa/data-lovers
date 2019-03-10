@@ -10,10 +10,6 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
-.hidden{
-  display: none;
-}
-
 .display{
   display: flex;
   justify-content: space-between;
@@ -44,6 +40,7 @@ body{
   margin: 0;
   padding: 0;
   width: 35%;
+  font-weight: 900;
 }
 
 .menu-list a{
@@ -92,6 +89,7 @@ body{
   align-items: center;
   position: relative;
   color: #FFF;
+  font-weight: 900;
   background-color: #0c8b8b;
   border: 1px solid #FFF;
   border-radius: 10px;
@@ -103,18 +101,26 @@ body{
 .filter-li label:hover{
   color: #0c8b8b;
   background-color: #FFF;
-  border: 2px solid #00B3B3;
+  border: 1px solid #00B3B3;
 }
 
 .filter-li input[type="radio"]:checked + label{
   color: #0c8b8b;
   background-color: #FFF;
-  border: 2px solid #00B3B3;
+  border: 1px solid #00B3B3;
 }
 
-/* .select-category{
+.select-category{
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
 
-} */
+.select-category.hidden{
+  display: none;
+}
 
 .category-li{
   position: relative;
@@ -122,22 +128,48 @@ body{
 }
 
 .category-li input[type="radio"]{
+  left: 50%;
+  top: 50%;
   position: absolute;
   z-index: 0;
 }
 
 .category-li label{
   position: relative;
+  cursor: pointer;
   z-index: 1;
 }
 
-.select-category img{
-  width: 10%;
+.category-li label img{
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px transparent;
+  transition: 0.2s ease-in-out;
 }
 
-/* .select-year{
+.category-li label img:hover{
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #FFF;
+  display: block;
+}
 
-} */
+.category-li input[type="radio"]:checked + label img{
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #FFF;
+  display: block;
+}
+
+.select-year{
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-year.hidden{
+  display: none;
+}
 
 .select-year li{
   position: relative;
@@ -145,15 +177,53 @@ body{
 }
 
 .year-li input[type="radio"]{
+  left: 50%;
+  top: 50%;
   position: absolute;
   z-index: 0;
 }
 
 .year-li label{
   position: relative;
+  cursor: pointer;
   z-index: 1;
 }
 
-.select-year img{
-  width: 10%;
+.select-year label img{
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px transparent;
+  transition: 0.2s ease-in-out;
+}
+
+.year-li label img:hover{
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #FFF;
+  display: block;
+}
+
+.year-li input[type="radio"]:checked + label img{
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #FFF;
+  display: block;
+}
+
+.btn-send{
+  width: 100px;
+  height: 100px;
+  padding: 10%;
+  color: #FFF;
+  font-weight: 900;
+  background-color: #0c8b8b;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.btn-send:hover{
+  color: #0c8b8b;
+  background-color: #FFF;
+  border: 1px solid #00B3B3;
 }
