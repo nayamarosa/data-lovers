@@ -4,49 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Data Lovers</title>
 </head>
 <body>
-  <form id="data-form">
-    <div>
-      <input type="radio" name="filter" id="category" value="category">
-      <label for="category">CATEGORIA</label>
-      <input type="radio" name="filter" id="year" value="year">
-      <label for="year">ANO</label>
+  <header class="nav-menu">
+    <nav class="container display">
+      <h1 class="nav-h1">
+        <a href="#"><img src="img/logo.png" alt="logo" class="logo"></a>
+      </h1>
+      <ul class="display menu-list">
+        <li><a href="#">SOBRE</a></li>
+        <li><a href="#">ESTATÍSTICAS</a></li>
+        <li><a href="#">CONTATO</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="container display">
+      <section>
+        <img src="img/car.png" alt="">
+      </section>
+      <table id="table-data">
+        
+      </table>
     </div>
-    <section>
-      <div id="select-category" class="hidden">
-        <input type="radio" name="select-category" id="car" value="Total_Injured_Persons_Passenger_Car_Occupants">
-        <label for="car">CARRO</label>
-        <input type="radio" name="select-category" id="bus" value="Total_Injured_Persons_Bus_Occupants">
-        <label for="bus">ÔNIBUS</label>
-        <input type="radio" name="select-category" id="truck" value="Total_Injured_Persons_Truck_Occupants_Large">
-        <label for="truck">CAMINHÃO</label>
-        <input type="radio" name="select-category" id="moto" value="Total_Injured_Persons_Motorcyclists">
-        <label for="moto">MOTO</label>
-        <input type="radio" name="select-category" id="bike" value="Total_Injured_Persons_Pedalcyclists">
-        <label for="bike">BICICLETA</label>
-      </div>
-      <div id="select-year" class="hidden">
-        <input type="radio" name="select-year" id="2011" value="2011-01-04">
-        <label for="2011">2011</label>
-        <input type="radio" name="select-year" id="2012" value="2012-01-04">
-        <label for="2012">2012</label>
-        <input type="radio" name="select-year" id="2013" value="2013-01-04">
-        <label for="2013">2013</label>
-        <input type="radio" name="select-year" id="2014" value="2014-01-04">
-        <label for="2014">2014</label>
-        <input type="radio" name="select-year" id="2015" value="2015-01-04">
-        <label for="2015">2015</label>
+    <section class="data-search">
+      <div class="container">
+        <form id="data-form" class="display">
+          <ul class="select-filter">
+            <li class="filter-li">
+              <input type="radio" name="filter" id="category" value="category">
+              <label for="category">CATEGORIA</label>
+            </li>
+            <li class="filter-li">
+              <input type="radio" name="filter" id="year" value="year">
+              <label for="year">ANO</label>
+            </li>
+          </ul>
+          <ul id="select-category" class="hidden select-category">
+            <li class="category-li">
+              <input type="radio" name="select-category" id="car" value="Total_Injured_Persons_Passenger_Car_Occupants">
+              <label for="car"><img src="img/car.png" alt="car"></label>
+            </li>
+            <li class="category-li">
+              <input type="radio" name="select-category" id="bus" value="Total_Injured_Persons_Bus_Occupants">
+              <label for="bus"><img src="img/bus.png" alt="bus"></label>
+            </li>
+            <li class="category-li">
+              <input type="radio" name="select-category" id="truck" value="Total_Injured_Persons_Truck_Occupants_Large">
+              <label for="truck"><img src="img/truck.png" alt="truck"></label>
+            </li>
+            <li class="category-li">
+              <input type="radio" name="select-category" id="moto" value="Total_Injured_Persons_Motorcyclists">
+              <label for="moto"><img src="img/motorcycle.png" alt="moto"></label>
+            </li>
+            <li class="category-li">
+              <input type="radio" name="select-category" id="bike" value="Total_Injured_Persons_Pedalcyclists">
+              <label for="bike"><img src="img/bike.png" alt="bike"></label>
+            </li>
+          </ul>
+          <ul id="select-year" class="hidden select-year">
+            <li class="year-li">
+              <input type="radio" name="select-year" id="2011" value="2011-01-04">
+              <label for="2011"><img src="img/2011.png" alt="2011"></label>
+            </li>
+            <li class="year-li">
+              <input type="radio" name="select-year" id="2012" value="2012-01-04">
+              <label for="2012"><img src="img/2012.png" alt="2012"></label>
+            </li>
+            <li class="year-li">
+              <input type="radio" name="select-year" id="2013" value="2013-01-04">
+              <label for="2013"><img src="img/2013.png" alt="2013"></label>
+            </li>
+            <li class="year-li">
+              <input type="radio" name="select-year" id="2014" value="2014-01-04">
+              <label for="2014"><img src="img/2014.png" alt="2014"></label>
+            </li>
+            <li class="year-li">
+              <input type="radio" name="select-year" id="2015" value="2015-01-04">
+              <label for="2015"><img src="img/2015.png" alt="2015"></label>
+            </li>
+          </ul>
+          <div>
+            <button type="submit">ENVIAR</button>
+            <button type="reset">LIMPAR</button>
+          </div>
+        </form>
       </div>
     </section>
-    <div>
-      <button type="submit">ENVIAR</button>
-      <button type="reset">LIMPAR</button>
-    </div>
-  </form>
-  
+  </main>
+  <footer>
+    
+  </footer>
   <script src="main.js"></script>
 </body>
 </html>

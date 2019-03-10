@@ -4,7 +4,156 @@
 
 0CC0C0
 00B3B3 */
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
 
 .hidden{
   display: none;
+}
+
+.display{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container{
+  margin: 0 auto;
+  width: 70%;
+}
+
+.nav-menu{
+  padding: 1% 0;
+  background-color: #0c8b8b;
+}
+
+.nav-h1{
+  margin: 0;
+}
+
+.logo{
+  margin: 0;
+  width: 35%;
+  cursor: pointer;
+}
+
+.menu-list{
+  margin: 0;
+  padding: 0;
+  width: 35%;
+}
+
+.menu-list a{
+  color: #FFF;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-list a:hover{
+  color: #0CC0C0;
+}
+
+.menu-list li{
+  list-style: none;
+}
+
+.data-search{
+  background-color: #0c8b8b;
+}
+
+.select-filter{
+  margin: 0;
+  padding: 0;
+}
+
+.filter-li{
+  position: relative;
+  list-style: none;
+}
+
+.filter-li input[type="radio"]{
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  z-index: 0;
+}
+
+.filter-li label{
+  width: 100px;
+  height: 40px;
+  margin: 10%;
+  padding: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #FFF;
+  background-color: #0c8b8b;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.filter-li label:hover{
+  color: #0c8b8b;
+  background-color: #FFF;
+  border: 2px solid #00B3B3;
+}
+
+.filter-li input[type="radio"]:checked + label{
+  color: #0c8b8b;
+  background-color: #FFF;
+  border: 2px solid #00B3B3;
+}
+
+/* .select-category{
+
+} */
+
+.category-li{
+  position: relative;
+  list-style: none;
+}
+
+.category-li input[type="radio"]{
+  position: absolute;
+  z-index: 0;
+}
+
+.category-li label{
+  position: relative;
+  z-index: 1;
+}
+
+.select-category img{
+  width: 10%;
+}
+
+/* .select-year{
+
+} */
+
+.select-year li{
+  position: relative;
+  list-style: none;
+}
+
+.year-li input[type="radio"]{
+  position: absolute;
+  z-index: 0;
+}
+
+.year-li label{
+  position: relative;
+  z-index: 1;
+}
+
+.select-year img{
+  width: 10%;
 }
