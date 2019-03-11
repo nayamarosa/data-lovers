@@ -11,8 +11,8 @@ function showSelect(){
   for (let filter of filterType){
     filter.addEventListener('click', function(){
       let filterValue = filter.value;
-      let selectCategory = document.getElementById("select-category");
-      let selectYear = document.getElementById("select-year");
+      let selectCategory = document.querySelector("#select-category");
+      let selectYear = document.querySelector("#select-year");
       if (filterValue === "category"){
         selectCategory.classList.remove("hidden");
         selectYear.classList.add("hidden");
@@ -56,6 +56,7 @@ function filterCategory(data, categorySelected){
     return data;
   }).map(data =>{
     if(data["Year"] === "2011-01-04"){
+      console.log(data)
       cleanTable();
       printTable("2011", data[categorySelected])
     }
@@ -95,10 +96,10 @@ function printTable(type, data){
   let tableItem = document.createElement('tr');
   let tdType = document.createElement('td');
   let tdData = document.createElement('td');
-
+  
   tdType.classList.add("td-type");
   tdData.classList.add("td-data");
-
+  
   table.appendChild(tableItem);
   tableItem.appendChild(tdType);
   tableItem.appendChild(tdData);
@@ -110,6 +111,29 @@ function printTable(type, data){
 function cleanTable(){
   let table = document.querySelector("#table-data");
   table.innerHTML = '';
+}
+
+function orderInjuries(){
+  let ordering = document.getElementById("order-injuries");
+  ordering.addEventListener('change', function(){
+    let value = ordering.options[ordering.selectedIndex].value;
+    console.log(value)
+    if(value === "increasing"){
+
+    }
+  });
+}
+
+function increasingOrder(a, b){
+  if(a.length - b.length){
+    return a - b;
+  }
+}
+
+function decreasingOrder(a, b){
+  if(b.length - a.length){
+    return b - a;
+  }
 }
 
 dataForm()
