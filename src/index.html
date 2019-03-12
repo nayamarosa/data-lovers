@@ -23,16 +23,21 @@
   </header>
   <main>
     <div class="container display">
-      <section>
+      <section class="data-graphic">
         <img src="img/car.png" alt="">
       </section>
-      <select name="order-injuries" id="order-injuries">
+      <section class="display data-print">
+      <select name="order-injuries" id="order-injuries" class="order-injuries">
         <option value="ordering">ORDENAR</option>
         <option value="increasing">MENOR PARA MAIOR</option>
         <option value="decreasing">MAIOR PARA MENOR</option>
       </select>
-      <table id="table-data">
+      <table id="table-data" class="table-data">
+        <thead></thead>
+        <tbody id="tbody-data"></tbody>
+        <tfoot id="tfoot-sum"></tfoot>
       </table>
+    </section>
     </div>
     <section class="data-search">
       <div class="container">

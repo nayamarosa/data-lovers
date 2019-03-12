@@ -1,4 +1,5 @@
 let arrayOrder = [];
+let arraySum = [];
 
 function btnEnable(btn){
   btn.disabled = false;
@@ -39,6 +40,7 @@ function filterYear(data, yearSelected){
     }
   }).map(data => {
     cleanTable();
+    arrayOrder = [];
     arrayOrder.push({type:"Bicicleta", injuried:data["Total_Injured_Persons_Pedalcyclists"]})
     arrayOrder.push({type:"Caminhão", injuried:data["Total_Injured_Persons_Truck_Occupants_Large"]})
     arrayOrder.push({type:"Carro", injuried:data["Total_Injured_Persons_Passenger_Car_Occupants"]})
@@ -49,6 +51,7 @@ function filterYear(data, yearSelected){
     for (let item in arrayOrder){
       printTable(arrayOrder[item].type, arrayOrder[item].injuried);
     }
+    printTableFooter(data)
   });
 }
 
@@ -63,6 +66,7 @@ function filterCategory(data, categorySelected){
   data.forEach(data =>{
     if(data["Year"] === "2011-01-04"){
       cleanTable();
+      arrayOrder = [];
       arrayOrder.push({type:"2011", injuried:data[categorySelected]})
       printTable("2011", data[categorySelected])
     }
@@ -102,25 +106,40 @@ function dataForm(){
 }
 
 function printTable(type, data){
-  let table = document.querySelector("#table-data");
+  let tableBody = document.querySelector("#tbody-data");
   let tableItem = document.createElement('tr');
   let tdType = document.createElement('td');
   let tdData = document.createElement('td');
-  
+
+  tableBody.appendChild(tableItem);
+  tableItem.appendChild(tdType);
+  tableItem.appendChild(tdData);
+
   tdType.classList.add("td-type");
   tdData.classList.add("td-data");
   
-  table.appendChild(tableItem);
-  tableItem.appendChild(tdType);
-  tableItem.appendChild(tdData);
-  
   tdType.innerHTML = type;
   tdData.innerHTML = data;
+}
+
+function printTableFooter(){
   
+  let tableFoot = document.querySelector("#tfoot-sum");
+  let tableItemFoot = document.createElement('tr');
+  let tdTotal = document.createElement('td');
+  let tdTotalSum = document.createElement('td');
+
+
+  tableFoot.appendChild(tableItemFoot);
+  tableItemFoot.appendChild(tdTotal);
+  tableItemFoot.appendChild(tdTotalSum);
+
+  tdTotal.innerHTML = "TOTAL DE ACIDENTES"
+  tdTotalSum.innerHTML = injuriesSum(data);
 }
 
 function cleanTable(){
-  let table = document.querySelector("#table-data");
+  let table = document.querySelector("#tbody-data");
   table.innerHTML = '';
 }
 
@@ -167,6 +186,18 @@ function decreasingOrder(a, b){
   if(b.injuried - a.injuried){
     return b.injuried - a.injuried;
   }
+}
+
+function injuriesSum(data){
+  arraySum = [];
+  arraySum.push(data["Total_Injured_Persons_Pedalcyclists"]);
+  arraySum.push(data["Total_Injured_Persons_Truck_Occupants_Large"]);
+  arraySum.push(data["Total_Injured_Persons_Passenger_Car_Occupants"]);
+  arraySum.push(data["Total_Injured_Persons_Motorcyclists"]);
+  arraySum.push(data["Total_Injured_Persons_Bus_Occupants"]);
+
+  const reducer = (num, currentValue) => num + currentValue;
+  return arraySum.reduce(reducer)
 }
 
 orderInjuries()

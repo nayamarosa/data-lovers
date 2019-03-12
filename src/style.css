@@ -58,6 +58,38 @@ body{
   list-style: none;
 }
 
+.data-graphic{
+
+}
+
+.data-print{
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.order-injuries{
+  margin: 0 0 10%;
+}
+
+.table-data{
+  border-collapse: collapse;
+}
+
+.td-type{
+  text-align: center;
+  font-weight: 900;
+  width: 8vw;
+  padding: 5%;
+  border: 1px solid #000;
+}
+
+.td-data{
+  text-align: center;
+  width: 8vw;
+  padding: 5%;
+  border: 1px solid #000;
+}
+
 .data-search{
   background-color: #0c8b8b;
 }
