@@ -51,7 +51,7 @@ function filterYear(data, yearSelected){
     for (let item in arrayOrder){
       printTable(arrayOrder[item].type, arrayOrder[item].injuried);
     }
-    printTableFooter(data)
+    printTableFooterYear(data)
   });
 }
 
@@ -60,7 +60,6 @@ function getDataCategory(selection){
   .then(response => { return response.json()})
   .then(data => filterCategory(data, selection));
 }
-
 
 function filterCategory(data, categorySelected){
   data.forEach(data =>{
@@ -86,6 +85,7 @@ function filterCategory(data, categorySelected){
       arrayOrder.push({type:"2015", injuried:data[categorySelected]})
       printTable("2015",  data[categorySelected])
     }
+    printTableFooterCategory(data)
   });
 }
 
@@ -93,6 +93,7 @@ function dataForm(){
   let form = document.querySelector("#data-form");
   form.addEventListener('submit', function(e){
     e.preventDefault();
+
     let filterType = document.querySelector("input[name='filter']:checked").value;
     
     if(filterType == "year"){
@@ -122,25 +123,44 @@ function printTable(type, data){
   tdData.innerHTML = data;
 }
 
-function printTableFooter(){
+function printTableFooterYear(data){
   
   let tableFoot = document.querySelector("#tfoot-sum");
   let tableItemFoot = document.createElement('tr');
   let tdTotal = document.createElement('td');
   let tdTotalSum = document.createElement('td');
 
+  tableFoot.appendChild(tableItemFoot);
+  tableItemFoot.appendChild(tdTotal);
+  tableItemFoot.appendChild(tdTotalSum);
+
+  tdTotal.classList.add("td-type");
+  tdTotalSum.classList.add("td-data");
+
+  tdTotal.innerHTML = "TOTAL DE ACIDENTES"
+  tdTotalSum.innerHTML = injuriesSumYear(data);
+}
+
+function printTableFooterCategory(data){
+  
+  let tableFoot = document.querySelector("#tfoot-sum");
+  let tableItemFoot = document.createElement('tr');
+  let tdTotal = document.createElement('td');
+  let tdTotalSum = document.createElement('td');
 
   tableFoot.appendChild(tableItemFoot);
   tableItemFoot.appendChild(tdTotal);
   tableItemFoot.appendChild(tdTotalSum);
 
   tdTotal.innerHTML = "TOTAL DE ACIDENTES"
-  tdTotalSum.innerHTML = injuriesSum(data);
+  tdTotalSum.innerHTML = injuriesSumCategory(data);
 }
 
 function cleanTable(){
-  let table = document.querySelector("#tbody-data");
-  table.innerHTML = '';
+  let tableBody = document.querySelector("#tbody-data");
+  let tableFooter = document.querySelector("#tfoot-sum");
+  tableBody.innerHTML = '';
+  tableFooter.innerHTML = '';
 }
 
 
@@ -188,7 +208,7 @@ function decreasingOrder(a, b){
   }
 }
 
-function injuriesSum(data){
+function injuriesSumYear(data){
   arraySum = [];
   arraySum.push(data["Total_Injured_Persons_Pedalcyclists"]);
   arraySum.push(data["Total_Injured_Persons_Truck_Occupants_Large"]);
@@ -196,6 +216,27 @@ function injuriesSum(data){
   arraySum.push(data["Total_Injured_Persons_Motorcyclists"]);
   arraySum.push(data["Total_Injured_Persons_Bus_Occupants"]);
 
+  const reducer = (num, currentValue) => num + currentValue;
+  return arraySum.reduce(reducer)
+}
+
+function injuriesSumCategory(data){
+  arraySum = [];
+  if(data["Year"] === "2011-01-04"){
+    arraySum.push(data[categorySelected])
+  }
+  if(data["Year"] === "2012-01-04"){
+    arraySum.push(data[categorySelected])
+  }
+  if(data["Year"] === "2013-01-04"){
+    arraySum.push(data[categorySelected])
+  }
+  if(data["Year"] === "2014-01-04"){
+    arraySum.push(data[categorySelected])
+  }
+  if(data["Year"] === "2015-01-04"){
+    arraySum.push(data[categorySelected])
+  }
   const reducer = (num, currentValue) => num + currentValue;
   return arraySum.reduce(reducer)
 }
