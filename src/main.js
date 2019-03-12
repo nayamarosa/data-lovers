@@ -1,3 +1,5 @@
+let arrayOrder = [];
+
 function btnEnable(btn){
   btn.disabled = false;
 }
@@ -37,11 +39,16 @@ function filterYear(data, yearSelected){
     }
   }).map(data => {
     cleanTable();
-    printTable("Carro", data["Total_Injured_Persons_Passenger_Car_Occupants"]);
-    printTable("Ônibus", data["Total_Injured_Persons_Bus_Occupants"]);
-    printTable("Caminhão", data["Total_Injured_Persons_Truck_Occupants_Large"]);
-    printTable("Moto", data["Total_Injured_Persons_Motorcyclists"]);
-    printTable("Bicicleta", data["Total_Injured_Persons_Pedalcyclists"]);
+    arrayOrder.push({type:"Bicicleta", injuried:data["Total_Injured_Persons_Pedalcyclists"]})
+    arrayOrder.push({type:"Caminhão", injuried:data["Total_Injured_Persons_Truck_Occupants_Large"]})
+    arrayOrder.push({type:"Carro", injuried:data["Total_Injured_Persons_Passenger_Car_Occupants"]})
+    arrayOrder.push({type:"Moto", injuried:data["Total_Injured_Persons_Motorcyclists"]})
+    arrayOrder.push({type:"Ônibus", injuried:data["Total_Injured_Persons_Bus_Occupants"]})
+    
+    arrayOrder.sort(alphabeticOrder);
+    for (let item in arrayOrder){
+      printTable(arrayOrder[item].type, arrayOrder[item].injuried);
+    }
   });
 }
 
@@ -51,25 +58,28 @@ function getDataCategory(selection){
   .then(data => filterCategory(data, selection));
 }
 
+
 function filterCategory(data, categorySelected){
-  data.filter(data =>{
-    return data;
-  }).map(data =>{
+  data.forEach(data =>{
     if(data["Year"] === "2011-01-04"){
-      console.log(data)
       cleanTable();
+      arrayOrder.push({type:"2011", injuried:data[categorySelected]})
       printTable("2011", data[categorySelected])
     }
     if(data["Year"] === "2012-01-04"){
+      arrayOrder.push({type:"2012", injuried:data[categorySelected]})
       printTable("2012",  data[categorySelected])
     }
     if(data["Year"] === "2013-01-04"){
+      arrayOrder.push({type:"2013", injuried:data[categorySelected]})
       printTable("2013",  data[categorySelected])
     }
     if(data["Year"] === "2014-01-04"){
+      arrayOrder.push({type:"2014", injuried:data[categorySelected]})
       printTable("2014",  data[categorySelected])
     }
     if(data["Year"] === "2015-01-04"){
+      arrayOrder.push({type:"2015", injuried:data[categorySelected]})
       printTable("2015",  data[categorySelected])
     }
   });
@@ -106,6 +116,7 @@ function printTable(type, data){
   
   tdType.innerHTML = type;
   tdData.innerHTML = data;
+  
 }
 
 function cleanTable(){
@@ -113,28 +124,51 @@ function cleanTable(){
   table.innerHTML = '';
 }
 
+
 function orderInjuries(){
   let ordering = document.getElementById("order-injuries");
   ordering.addEventListener('change', function(){
     let value = ordering.options[ordering.selectedIndex].value;
-    console.log(value)
     if(value === "increasing"){
-
+      arrayOrder.sort(increasingOrder);
+      cleanTable();
+      for (let item in arrayOrder){
+        printTable(arrayOrder[item].type, arrayOrder[item].injuried);
+      }
+    } else if(value === "decreasing"){
+      arrayOrder.sort(decreasingOrder);
+      cleanTable();
+      for (let item in arrayOrder){
+        printTable(arrayOrder[item].type, arrayOrder[item].injuried);
+      }
+    } else {
+      arrayOrder.sort(alphabeticOrder);
+      cleanTable();
+      for (let item in arrayOrder){
+        printTable(arrayOrder[item].type, arrayOrder[item].injuried);
+      }
     }
   });
 }
 
+function alphabeticOrder(a, b){
+  if(a.type < b.type){
+    return -1;
+  }
+}
+
 function increasingOrder(a, b){
-  if(a.length - b.length){
-    return a - b;
+  if(a.injuried - b.injuried){
+    return a.injuried - b.injuried;
   }
 }
 
 function decreasingOrder(a, b){
-  if(b.length - a.length){
-    return b - a;
+  if(b.injuried - a.injuried){
+    return b.injuried - a.injuried;
   }
 }
 
+orderInjuries()
 dataForm()
 showSelect()
