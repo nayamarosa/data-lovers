@@ -1,9 +1,3 @@
-/* 
-00E6AC
-07D29E
-
-0CC0C0
-00B3B3 */
 body{
   margin: 0;
   padding: 0;
@@ -19,6 +13,10 @@ body{
 .container{
   margin: 0 auto;
   width: 70%;
+}
+
+.hidden{
+  display: none;
 }
 
 .nav-menu{
@@ -58,36 +56,43 @@ body{
   list-style: none;
 }
 
-.data-graphic{
-
-}
-
 .data-print{
   flex-direction: column;
   align-items: flex-end;
 }
 
 .order-injuries{
-  margin: 0 0 10%;
+  margin: 0 0 5%;
 }
 
 .table-data{
   border-collapse: collapse;
 }
 
+.td-name{
+  text-align: center;
+  font-weight: 900;
+  width: 13vw;
+  padding: 2%;
+  color: #333333;
+  border: 1px solid #b2b2b8;
+}
+
 .td-type{
   text-align: center;
   font-weight: 900;
-  width: 8vw;
-  padding: 5%;
-  border: 1px solid #000;
+  width: 13vw;
+  padding: 2%;
+  color: #333333;
+  border: 1px solid #b2b2b8;
 }
 
 .td-data{
   text-align: center;
-  width: 8vw;
-  padding: 5%;
-  border: 1px solid #000;
+  width: 13vw;
+  padding: 2%;
+  color: #333333;
+  border: 1px solid #b2b2b8;
 }
 
 .data-search{

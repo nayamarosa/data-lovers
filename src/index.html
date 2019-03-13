@@ -23,8 +23,9 @@
   </header>
   <main>
     <div class="container display">
-      <section class="data-graphic">
-        <img src="img/car.png" alt="">
+      <section>
+        <div id="chart">
+        </div>
       </section>
       <section class="display data-print">
       <select name="order-injuries" id="order-injuries" class="order-injuries">
@@ -106,6 +107,33 @@
   <footer>
     
   </footer>
+  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Year');
+      data.addColumn('number', 'Injuries');
+      data.addRows([
+        ['2011', 1405000],
+        ['2012', 1507000],
+        ['2013', 1479000],
+        ['2014', 1475000],
+        ['2015', 1541000],
+      ]);
+
+      var options = {'title':'DADOS GERAIS DE ACIDENTES ENTRE 2011 E 2015',
+                     'width':500,
+                     'height':400,
+                     'colors': ['#00B3B3']};
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    }
+  </script>
   <script src="main.js"></script>
 </body>
 </html>

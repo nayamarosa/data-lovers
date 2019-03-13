@@ -19,6 +19,25 @@ function showSelect(){
   }
 }
 
+function dataForm(){
+  let form = document.querySelector("#data-form");
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    
+    let ordering = document.getElementById("order-injuries");
+    ordering.classList.remove("hidden");
+
+    let filterType = document.querySelector("input[name='filter']:checked").value;
+    if(filterType == "year"){
+      let year = document.querySelector("input[name='select-year']:checked").value;
+      getDataYear(year);
+    } else if(filterType == "category"){
+      let category = document.querySelector("input[name='select-category']:checked").value;
+      getDataCategory(category);
+    }
+  });
+}
+
 function getDataYear(selection){
   fetch('./data/injuries/injuries.json')
   .then(response => { return response.json()})
@@ -51,7 +70,7 @@ function filterYear(data, yearSelected){
     for (let item in arrayOrder){
       printTable(arrayOrder[item].type, arrayOrder[item].injuried);
     }
-    printTableDetail(data)
+    printTableDetail()
   });
 }
 
@@ -97,23 +116,7 @@ function filterCategory(data, categorySelected){
       printTable("2015",  data[categorySelected])
     }
   });
-  printTableDetail(data);
-}
-
-function dataForm(){
-  let form = document.querySelector("#data-form");
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    
-    let filterType = document.querySelector("input[name='filter']:checked").value;
-    if(filterType == "year"){
-      let year = document.querySelector("input[name='select-year']:checked").value;
-      getDataYear(year);
-    } else if(filterType == "category"){
-      let category = document.querySelector("input[name='select-category']:checked").value;
-      getDataCategory(category);
-    }
-  });
+  printTableDetail();
 }
 
 function printTable(type, data){
@@ -181,26 +184,29 @@ function cleanTable(){
   tableFooter.innerHTML = '';
 }
 
-
 function orderInjuries(){
   let ordering = document.getElementById("order-injuries");
+  ordering.classList.add("hidden");
   ordering.addEventListener('change', function(){
     let value = ordering.options[ordering.selectedIndex].value;
     if(value === "increasing"){
       arrayOrder.sort(increasingOrder);
       cleanTable();
+      printTableDetail();
       for (let item in arrayOrder){
         printTable(arrayOrder[item].type, arrayOrder[item].injuried);
       }
     } else if(value === "decreasing"){
       arrayOrder.sort(decreasingOrder);
       cleanTable();
+      printTableDetail();
       for (let item in arrayOrder){
         printTable(arrayOrder[item].type, arrayOrder[item].injuried);
       }
     } else {
       arrayOrder.sort(alphabeticOrder);
       cleanTable();
+      printTableDetail();
       for (let item in arrayOrder){
         printTable(arrayOrder[item].type, arrayOrder[item].injuried);
       }
